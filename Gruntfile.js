@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-    grunt.registerTask('default', 'Testing out Grunt logging and task callbacks', ['watch']);
+    grunt.registerTask('default',  [ 'clean', 'copy', 'hapi', 'watch']);
 
     grunt.registerTask( 'build', [ 'clean', 'copy' ] );
 
