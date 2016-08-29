@@ -8,15 +8,20 @@
         if (currentSong !== song) {
           if (currentBuzzObject) {
             currentBuzzObject.stop();
+            currentSong.playing = null;
           }
 
-          currentBuzzObject = new buzz.sound(song.audioUrl, {
+          var currentBuzzObject = new buzz.sound(song.audioUrl, {
                  formats: ['mp3'],
                  preload: true
-             });
+          });
 
-            currentSong = song;
-            currentBuzzObject.play();
+          currentSong = song;
+
+          currentBuzzObject.play();
+
+          song.playing = true;
+
         } else if (currentSong === song) {
           if (currentBuzzObject.isPaused()) {
             currentBuzzObject.play();
