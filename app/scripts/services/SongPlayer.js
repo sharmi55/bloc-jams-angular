@@ -1,15 +1,28 @@
 (function() {
     function SongPlayer() {
-         var SongPlayer = {};
+      var SongPlayer = {};
+      var currentSong = null;
+      var currentBuzzObject = null;
 
-         SongPlayer.play = function(song) {
-             var currentBuzzObject = new buzz.sound(song.audioUrl, {
+      SongPlayer.play = function(song) {
+        if (currentSong !== song) {
+          if (currentBuzzObject) {
+            currentBuzzObject.stop();
+          }
+
+          currentBuzzObject = new buzz.sound(song.audioUrl, {
                  formats: ['mp3'],
                  preload: true
              });
 
-             currentBuzzObject.play();
-         };
+            currentSong = song;
+            currentBuzzObject.play();
+        } else if (currentSong === song) {
+          if (currentBuzzObject.isPaused()) {
+            currentBuzzObject.play();
+          }
+        }
+    };
 
          return SongPlayer;
     }
