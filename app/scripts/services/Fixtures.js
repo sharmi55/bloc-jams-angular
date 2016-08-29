@@ -53,5 +53,5 @@
 
   angular
     .module('blocJams')
-    .factory('Fixtures', Fixtures, getCollection);
+    .factory('Fixtures', Fixtures);
 })();
