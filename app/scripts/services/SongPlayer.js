@@ -27,6 +27,10 @@
         currentSong = song;
       };
 
+      var playSong = function() {
+        currentBuzzObject.play();
+        song.playing = true;
+      }
 
       SongPlayer.play = function(song) {
         if (currentSong !== song) {
@@ -55,3 +59,8 @@
         .module('blocJams')
         .factory('SongPlayer', SongPlayer);
 })();
+
+var playSong = function() {
+  currentBuzzObject.play();
+  song.playing = true;
+};
