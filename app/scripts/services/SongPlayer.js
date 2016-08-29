@@ -29,7 +29,12 @@
         }
     };
 
-         return SongPlayer;
+      SongPlayer.pause = function(song) {
+        currentBuzzObject.pause();
+        song.playing = false;
+      };
+
+        return SongPlayer;
     }
 
     angular
