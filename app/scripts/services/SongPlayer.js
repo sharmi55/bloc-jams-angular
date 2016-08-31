@@ -1,18 +1,33 @@
 (function() {
-    function SongPlayer() {
-      var SongPlayer = {};
-      var currentSong = null;
-      /**
-      * @desc Buzz object audio file
-      * @type {Object}
-      */
 
+  /*
+  * @function songPlayer
+  * @desc function that will be passed to factory service
+  * @returns {Object} SongPlayer
+  */
+    function SongPlayer() {
+/*
+* @desc object for playing or pausing a song
+* @type {Object}
+*/
+      var SongPlayer = {};
+
+/*
+* @desc var set to song object
+* @type {Object}
+*/
+      var currentSong = null;
+
+/*
+* @desc Buzz object audio file
+* @type {Object}
+*/
       var currentBuzzObject = null;
-      /**
-      * @function setSong
-      * @desc Stops currently playing song and loads new audio file as currentBuzzObject
-      * @param {Object} song
-      */
+/*
+* @function setSong
+* @desc Stops currently playing song and loads new audio file as currentBuzzObject
+* @param {Object} song
+*/
       var setSong = function(song) {
         if (currentBuzzObject) {
           currentBuzzObject.stop();
@@ -26,15 +41,27 @@
 
         currentSong = song;
       };
+/*
+* @function playSong
+* @desc plays current buzzObject audio file and sets current song object property
+* @param {Object} song
+*/
+      var playSong = function(song) {
+        currentBuzzObject.play();
+        song.playing = true;
+      };
 
+/*
+* @function play and pause
+* @desc logic for playing or pausing a song based on click
+* @param {Object} song
+*/
 
       SongPlayer.play = function(song) {
         if (currentSong !== song) {
           setSong(song);
 
-          currentBuzzObject.play();
-
-          song.playing = true;
+          playSong(song);
 
         } else if (currentSong === song) {
           if (currentBuzzObject.isPaused()) {
