@@ -55,7 +55,17 @@
       };
 
 /*
-* @desc var set to song object
+* @function getSongIndex
+* @desc returns index of the song in current album
+* @params {Object} song
+* @returns {Number}
+*/
+      var getSongIndex = function(song) {
+        return currentAlbum.songs.indexOf(song);
+      };
+
+/*
+* @desc var set to song object from list of songs
 * @type {Object}
 */
       SongPlayer.currentSong = null;
