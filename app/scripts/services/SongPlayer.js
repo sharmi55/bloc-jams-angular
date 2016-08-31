@@ -38,6 +38,7 @@
           preload: true
         });
 
+        SongPlayer.currentSong = song;
       };
 /*
 * @function playSong
@@ -47,11 +48,6 @@
       var playSong = function(song) {
         currentBuzzObject.play();
         song.playing = true;
-      };
-
-
-      var getSongIndex = function(song) {
-        return currentAlbum.songs.indexOf(song);
       };
 
 /*
@@ -84,9 +80,9 @@
           playSong(song);
 
         } else if (SongPlayer.currentSong === song) {
-          if (currentBuzzObject.isPaused()) {
-            currentBuzzObject.play();
-          }
+            if (currentBuzzObject.isPaused()) {
+              playSong(song);
+            }
         }
     };
 
