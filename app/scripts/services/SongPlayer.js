@@ -13,10 +13,6 @@
       var SongPlayer = {};
 
 /*
-* @desc var set to song object
-* @type {Object}
-*/
-/*
 * @desc Buzz object audio file
 * @type {Object}
 */
@@ -37,7 +33,6 @@
           preload: true
         });
 
-        SongPlayer.currentSong = song;
       };
 /*
 * @function playSong
@@ -50,12 +45,17 @@
       };
 
 /*
+* @desc var set to song object
+* @type {Object}
+*/
+      SongPlayer.currentSong = null;
+
+
+/*
 * @function play and pause
 * @desc logic for playing or pausing a song based on click
 * @param {Object} song
 */
-      SongPlayer.SongPlayer.currentSong = null;
-
 
       SongPlayer.play = function(song) {
         if (SongPlayer.currentSong !== song) {
