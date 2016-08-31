@@ -11,6 +11,7 @@
 * @type {Object}
 */
       var SongPlayer = {};
+
 /*
   @desc private variable to store current album info
   @type {Object}
@@ -22,6 +23,7 @@
 * @type {Object}
 */
       var currentBuzzObject = null;
+
 /*
 * @function setSong
 * @desc Stops currently playing song and loads new audio file as currentBuzzObject
@@ -30,7 +32,7 @@
       var setSong = function(song) {
         if (currentBuzzObject) {
           currentBuzzObject.stop();
-          SongPlayer.currentSong.playing = null;
+          SongPlayer.currentSong.playing = null
         }
 
         currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -40,6 +42,7 @@
 
         SongPlayer.currentSong = song;
       };
+
 /*
 * @function playSong
 * @desc plays current buzzObject audio file and sets current song object property
@@ -49,6 +52,18 @@
         currentBuzzObject.play();
         song.playing = true;
       };
+
+/*
+* @function stopSong
+* @desc stops current buzzObject audio file
+* @params {Object} song
+*/
+      var stopSong = function(song) {
+        currentBuzzObject.stop();
+        song.playing = null;
+      };
+
+
 
 /*
 * @function getSongIndex
@@ -102,13 +117,29 @@
           currentSongIndex--;
 
           if (currentSongIndex < 0) {
-            currentBuzzObject.stop();
-            SongPlayer.currentSong.playing = null;
+            stopSong();
           } else {
             var song = currentAlbum.songs[currentSongIndex];
             setSong(song);
             playSong(song);
           }
+      };
+
+/*
+* @function next
+* @desc logic to go to next song
+*/
+      SongPlayer.next = function() {
+        var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+        currentSongIndex++;
+
+        if(currentSongIndex >= currentAlbum.songs.length){
+          stopSong();
+        } else {
+          var song = currentAlbum.songs[currentSongIndex];
+          setSong(song);
+          playSong(song);
+        }
       };
 
         return SongPlayer;
