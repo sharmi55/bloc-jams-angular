@@ -58,6 +58,7 @@
 */
 
       SongPlayer.play = function(song) {
+        song = song || SongPlayer.currentSong;
         if (SongPlayer.currentSong !== song) {
           setSong(song);
 
@@ -71,6 +72,7 @@
     };
 
       SongPlayer.pause = function(song) {
+        song = song || SongPlayer.currentSong;
         currentBuzzObject.pause();
         song.playing = false;
       };
