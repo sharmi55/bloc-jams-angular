@@ -5,12 +5,17 @@
   * @desc function that will be passed to factory service
   * @returns {Object} SongPlayer
   */
-    function SongPlayer() {
+    function SongPlayer(Fixtures) {
 /*
 * @desc object for playing or pausing a song
 * @type {Object}
 */
       var SongPlayer = {};
+/*
+  @desc private variable to store current album info
+  @type {Object}
+*/
+      var currentAlbum = Fixtures.getAlbum();
 
 /*
 * @desc Buzz object audio file
@@ -44,12 +49,16 @@
         song.playing = true;
       };
 
+
+      var getSongIndex = function(song) {
+        return currentAlbum.songs.indexOf(song);
+      };
+
 /*
 * @desc var set to song object
 * @type {Object}
 */
       SongPlayer.currentSong = null;
-
 
 /*
 * @function play and pause
