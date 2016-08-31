@@ -6,11 +6,11 @@
           </a>
           <a class="play-pause">
             <span class='ion-play'
-                  ng-show="!song.playing"
+                  ng-show="!playerBar.songPlayer.currentSong.playing"
                   ng-click="playerBar.songPlayer.play(song)">
             </span>
             <span class='ion-pause'
-                  ng-show="song.playing"
+                  ng-show="playerBar.songPlayer.currentSong.playing"
                   ng-click="playerBar.songPlayer.pause(song)">
             </span>
           </a>
