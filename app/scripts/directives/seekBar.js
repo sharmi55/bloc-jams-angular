@@ -14,7 +14,9 @@
       templateUrl: '/templates/directives/seek_bar.html',
       replace: true,
       restrict: 'E',
-      scope: { },
+      scope: {
+        onChange: '&'
+      },
       link: function(scope, element, attributes) {
         scope.value = 0;
         scope.max = 100;
