@@ -166,8 +166,7 @@
       };
 
 
-    SongPlayer.volume = 0;
-
+    SongPlayer.volume = 50;
     SongPlayer.max = 100;
 
 /*
@@ -178,6 +177,7 @@
       SongPlayer.setVolume = function(value) {
         if (currentBuzzObject) {
             currentBuzzObject.setVolume(value);
+        }
       };
 
         return SongPlayer;
