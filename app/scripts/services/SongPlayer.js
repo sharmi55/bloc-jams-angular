@@ -82,6 +82,12 @@
       SongPlayer.currentSong = null;
 
 /*
+* @desc Current playback time (in seconds) of currently playing song
+* @type {Number}
+*/
+      SongPlayer.currentTime = null;
+
+/*
 * @function play and pause
 * @desc logic for playing or pausing a song based on click
 * @param {Object} song
