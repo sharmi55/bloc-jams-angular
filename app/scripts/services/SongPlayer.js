@@ -166,15 +166,18 @@
       };
 
 
+    SongPlayer.volume = 0;
+
+    SongPlayer.max = 100;
 
 /*
 * @function setVolume
 * @desc Set current volume of currently playing song
 * @params {Number} volume
 */
-      SongPlayer.setVolume = function(volume) {
+      SongPlayer.setVolume = function(value) {
         if (currentBuzzObject) {
-            currentBuzzObject.setVolume(volume);
+            currentBuzzObject.setVolume(value);
       };
 
         return SongPlayer;
