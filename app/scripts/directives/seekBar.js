@@ -52,6 +52,12 @@
           notifyOnChange(scope.value);
         };
 
+        var notifyOnChange = function(newValue) {
+          if (typeof scope.onChange === 'function') {
+            scope.onChange({value: newValue});
+          }
+        };
+
         scope.trackThumb = function() {
           $document.bind('mousemove.thumb', function(event) {
               var percent = calculatePercent(seekBar, event);
@@ -61,11 +67,7 @@
               });
           });
 
-        var notifyOnChange = function(newValue) {
-          if (typeof scope.onChange === 'function') {
-            scope.onChange({value: newValue});
-          }
-        };
+
 
           $document.bind('mouseup.thumb', function() {
               $document.unbind('mousemove.thumb');
